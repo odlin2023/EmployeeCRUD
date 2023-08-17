@@ -109,7 +109,34 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+		<!-- Azure Web App deployment plugin -->
+			<plugin>
+				<groupId>com.microsoft.azure</groupId>
+				<artifactId>azure-webapp-maven-plugin</artifactId>
+				<version>1.17.0</version>
+				<configuration>
+					<schemaVersion>V2</schemaVersion>
+					<resourceGroup>FirstWebbAppRG</resourceGroup>
+					<appName>Firstwebapp123456789</appName>
+					<region>East US</region>
+					<pricingTier>S1</pricingTier> <!-- Choose the appropriate tier -->
+					<runtime>
+						<os>linux</os> <!-- Or "windows" if using Windows -->
+						<javaVersion>17</javaVersion> <!-- Or the version you're using -->
+						<webContainer>tomcat 10</webContainer> <!-- Or your desired container -->
+					</runtime>
+					<deployment>
+						<resources>
+							<resource>
+								<directory>${project.build.directory}</directory>
+								<includes>
+									<include>*.war</include>
+								</includes>
+							</resource>
+						</resources>
+					</deployment>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
