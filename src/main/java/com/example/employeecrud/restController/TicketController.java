@@ -218,7 +218,7 @@ public class TicketController {
 
 
 
-    @GetMapping("/employeeDashboard/{employeeName}")
+  @GetMapping("/employeeDashboard/{employeeName}")
     public String getEmployeeDashboard(@PathVariable String employeeName, Model model) {
         // Fetch tickets for the employee
         List<Ticket> tickets = ticketService.getTicketsByEmployeeName(employeeName);
@@ -227,9 +227,6 @@ public class TicketController {
 
         return "employeeDashboard"; // Or any other view name you want to use
     }
-
-
-
 
     @PostMapping("/login")
     public String loginSubmit(@ModelAttribute NewEmployee newEmployee, HttpServletRequest request, RedirectAttributes redirectAttributes) {
@@ -248,14 +245,18 @@ public class TicketController {
                 System.out.println("Redirecting to /tickets");
                 return "redirect:/tickets";
             } else if (role.equals("USER")) {
-                System.out.println("Redirecting to /employeeDashboard");
-                return "redirect:/employeeDashboard";
+                System.out.println("Redirecting to /employeeDashboard/" + existing.getUsername()); // Redirect to employee dashboard with the username
+                return "redirect:/employeeDashboard/" + existing.getUsername();
             }
         }
 
         redirectAttributes.addFlashAttribute("error", "Invalid username or password");
         return "redirect:/login";
     }
+
+
+
+    
 
     @GetMapping("/admin")
     public String getAdminDashboard(Model model, HttpServletRequest request, Principal principal) {
