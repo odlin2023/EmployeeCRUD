@@ -51,3 +51,5 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F53FC789C8BC4125A25BF24494C932F2 }}
           package: '*.war'
+          additional-arguments: --param context-root=${{ env.CONTEXT_ROOT }}
+
