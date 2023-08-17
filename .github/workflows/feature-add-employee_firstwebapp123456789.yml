@@ -49,7 +49,5 @@ jobs:
         with:
           app-name: 'Firstwebapp123456789'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F53FC789C8BC4125A25BF24494C932F2 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2D4B2B8435C240F391763ABB081FDE37 }}
           package: '*.war'
-          additional-arguments: --param context-root=${{ env.CONTEXT_ROOT }}
-
