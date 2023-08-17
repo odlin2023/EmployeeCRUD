@@ -1,0 +1,15 @@
+
+spring:
+  datasource:
+    url: jdbc:sqlserver://firstdemo1.database.windows.net:1433;database=employee;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    username: odlinMontila
+    password: Jessicadaniel1.
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+
+
+

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Head section content goes here -->
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Welcome to Helpdesk</h1>
+  </div>
+
+  <div class="form-container">
+    <h2>Report Submitted Successfully</h2>
+    <p th:text="'Thank you, ' + ${name} + ', for reporting the problem: ' + ${subject}"></p>
+    <button type="button" class="back-button" onclick="window.history.back();">Back</button>
+  </div>
+</div>
+</body>
+</html>

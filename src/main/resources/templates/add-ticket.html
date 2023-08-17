@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Ticket</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1 class="my-4">Add Ticket</h1>
+
+  <form action="" th:action="@{/ticket/add}" th:object="${ticket}" method="post">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" th:field="*{name}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select class="form-control" id="status" th:field="*{status}" required>
+        <option value="Open">Open</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Closed">Closed</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="assignedTickets">Assigned Tickets:</label>
+      <select class="form-control" id="assignedTickets" name="assignedTickets" required>
+        <option value="">Select an option</option>
+        <option value="Billing">Billing</option>
+        <option value="Networking Issue">Networking Issue</option>
+        <option value="Website Not Loading">Website Not Loading</option>
+        <!-- Add more options as needed -->
+        <!-- <option value="Option Value">Option Text</option> -->
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="department">Department</label>
+      <select class="form-control" id="department" th:field="*{department}" required>
+        <option value="HR">HR</option>
+        <option value="IT">IT</option>
+        <option value="Finance">Finance</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="priority">Priority</label>
+      <select class="form-control" id="priority" th:field="*{priority}" required>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" th:field="*{email}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" th:field="*{description}" rows="10" cols="50" required></textarea>
+    </div>
+
+
+    <!-- Add more form fields here -->
+
+    <button type="submit" class="btn btn-primary">Add Ticket</button>
+  </form>
+</div>
+
+<!-- Add Bootstrap JS (jQuery and Popper.js required) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+/* Add your custom CSS styles for the dashboard here */
+.rectangle-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.rectangle-button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.red {
+    background-color: #dc3545;
+}
+
+.green {
+    background-color: #28a745;
+}
+
+.blue {
+    background-color: #007bff;
+}

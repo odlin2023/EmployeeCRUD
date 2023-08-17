@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --clr-light-bg: #f0ebff; /* Light purple background color */
+            --clr-shadow-light: #d9d1ff;
+            --clr-shadow-dark: #f8f5ff;
+        }
+
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--clr-light-bg);
+            margin: 0;
+            padding-top: 70px;
+            /* Apply the neumorphism effect to the body */
+            box-shadow: 10px 10px 30px var(--clr-shadow-light), -10px -10px 30px var(--clr-shadow-dark);
+        }
+
+        .navbar {
+            background-color: #4B0082; /* Use a dark purple color for the navbar */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .navbar a {
+            color: #fff;
+        }
+
+        .navbar-brand {
+            padding: 0.75rem 1rem;
+            font-size: 1.25rem;
+            color: #fff;
+        }
+
+        /* Add other styles as needed for your home page */
+        .container {
+            max-width: 1200px; /* Adjust the container width to your liking */
+            padding: 20px;
+            text-align: center;
+            /* Apply the neumorphism effect to the container */
+            box-shadow: 10px 10px 30px var(--clr-shadow-light), -10px -10px 30px var(--clr-shadow-dark);
+            background-color: var(--clr-light-bg);
+            border-radius: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #4B0082;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .btn-primary {
+            background-color: #4B0082; /* Dark purple color */
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #8B008B; /* Purple color */
+        }
+
+        /* Add other styles for your home page content */
+        .form-container {
+            background-color: var(--form-bg-color);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1),
+            -10px -10px 20px rgba(255, 255, 255, 0.5);
+            /* Increase size by 25% using transform scale */
+            transform: scale(1.10);
+            /* Increase width by 25% */
+            width: 100%;
+            max-width: 500px; /* You can adjust this value to control the maximum width */
+            margin: 0 auto; /* This centers the form-container horizontally */
+            /* Set the maximum height and allow scrolling if needed */
+            max-height: calc(100vh - 140px); /* Adjust the value based on your other elements' height */
+            overflow-y: auto;
+            width: 140%
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            max-height: calc(100vh - 140px); /* Adjust the value based on your other elements' height */
+            overflow-y: auto;
+        }
+
+
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--light-bg-color);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+        }
+
+        .form-group button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .form-group button[type="submit"]:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .dropdown-menu {
+            background-color: #2c003e; /* Dark purple color for the dropdown menu background */
+            border: none; /* Remove the default border */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+        }
+
+        /* Style the dropdown items */
+        .dropdown-item {
+            color: #fff; /* Text color for the dropdown items */
+            font-size: 1rem; /* Font size for the dropdown items */
+        }
+
+        /* Hover effect for the dropdown items */
+        .dropdown-item:hover {
+            background-color: dark grey; /* Purple color on hover */
+        }
+
+    </style>
+</head>
+
+<body>
+<!-- Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2c003e;">
+
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link"  th:href="@{/home}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Account
+                </a>
+                <div class="dropdown-menu" aria-labelledby="accountDropdown">
+                    <a class="dropdown-item"  th:href="@{/login}">Login</a>
+                    <a class="dropdown-item" th:href="@{/registration}">Register</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Home Page Content -->
+<div class="container">
+    <h1>How can we help you?</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in urna eget erat blandit euismod sit
+        amet nec mauris. Sed fermentum quam vitae augue pellentesque lacinia.</p>
+    <p>Mauris sit amet consectetur neque. Aliquam sollicitudin velit odio, vel finibus elit aliquet ut. Proin
+        congue dignissim metus vel interdum. Nullam eget eleifend sapien, at tristique urna.</p>
+    <p>Donec feugiat, mi vel volutpat lacinia, odio est vehicula nibh, ac consequat massa nisi ut lectus.</p>
+</div>
+
+<!-- Report Form -->
+
+<div style="height: 80px; background-color: #f0ebff;"></div>
+
+
+<div class="form-container">
+    <h2>Home</h2>
+    <form th:action="@{/home}" method="post" th:object="${report}">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" id="email" th:field="*{email}" required>
+        </div>
+        <div class="form-group">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" th:field="*{subject}" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" th:field="*{message}" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+</div>
+
+
+<div style="height: 20px; background-color: #f0ebff;"></div>
+
+<br>
+<br>
+<br>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

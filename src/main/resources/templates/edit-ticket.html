@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Ticket</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h2>Edit Ticket</h2>
+  <form th:object="${ticket}" th:action="@{/ticket/update/{id}(id=${ticket.id})}" method="post">
+
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" id="name" th:field="*{name}" th:value="${enteredNamed}" required>
+    </div>
+
+
+    <div class="form-group">
+      <label>Status</label>
+      <select class="form-control" id="status" th:field="*{status}" required>
+        <option value="Open">Open</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Closed">Closed</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Department</label>
+      <select class="form-control" id="department" th:field="*{department}" required>
+        <option value="HR">HR</option>
+        <option value="IT">IT</option>
+        <option value="Finance">Finance</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="text" th:field="*{phoneNumber}" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" th:field="*{email}" class="form-control">
+    </div>
+
+
+    <div class="form-group">
+      <label for="assignedTickets">Assigned Tickets:</label>
+      <select class="form-control" id="assignedTickets" name="assignedTickets" required>
+        <option value="">Select an option</option>
+        <option value="Billing">Billing</option>
+        <option value="Networking Issue">Networking Issue</option>
+        <option value="Website Not Loading">Website Not Loading</option>
+        <!-- Add more options as needed -->
+        <!-- <option value="Option Value">Option Text</option> -->
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Priority</label>
+      <select class="form-control" id="priority" th:field="*{priority}" required>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" th:field="*{description}" rows="10" cols="50" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      <i class="fas fa-save"></i> Update
+    </button>
+  </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

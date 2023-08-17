@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Helpdesk</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    :root {
+      --primary-color: #4B0082; /* Dark purple color */
+      --secondary-color: #8B008B; /* Purple color */
+      --light-bg-color: #f0f0f0; /* Light gray background color */
+      --form-bg-color: #fff; /* White background color for the form */
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--light-bg-color);
+      margin: 0;
+      padding-top: 70px;
+    }
+
+    .header {
+      text-align: center;
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 20px;
+      margin-top: 0; /* Set margin-top to 0 to remove white space */
+    }
+
+    .header h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .container p {
+      margin-bottom: 15px;
+    }
+
+    .btn-primary {
+      background-color: var(--secondary-color);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-color);
+    }
+
+    .form-container {
+      background-color: var(--form-bg-color);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--light-bg-color);
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      height: 120px;
+    }
+
+    .form-group input[type="text"]:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary-color);
+    }
+
+    .form-group button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--primary-color);
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .form-group button[type="submit"]:hover {
+      background-color: var(--secondary-color);
+    }
+
+    .back-button {
+      background-color: var(--secondary-color);
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Welcome to Helpdesk</h1>
+  </div>
+
+  <!-- Form to report a problem to admin -->
+  <div class="form-container">
+    <h2>Report a Problem</h2>
+    <form th:action="@{/report-form}" method="post" th:object="${report}">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-secondary mt-2 float-right" onclick="window.history.back();">Back</button>
+    </form>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
